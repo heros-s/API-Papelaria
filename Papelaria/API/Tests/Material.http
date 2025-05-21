@@ -1,0 +1,34 @@
+@url_base = http://localhost:5211/api/material
+
+
+### Listar materiais
+GET {{url_base}}/listar
+
+### Cadastrar material
+POST {{url_base}}/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Caneta BIC Esferográfica",
+    "descricao": "Caneta esferográfica azul",
+    "preco": 1.00,
+    "categoria": "Marcadores e Canetas"
+}
+
+### Alterar material
+PUT {{url_base}}/alterar/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "Caneta BIC Azul",
+    "descricao": "Caneta esferográfica azul",
+    "preco": 1,
+    "categoria": "Marcadores e Canetas"
+}
+
+### Deletar material
+DELETE {{url_base}}/remover/1
+
+### Buscar material por ID
+GET {{url_base}}/buscar/2
