@@ -1,0 +1,28 @@
+// Carrinho.http
+
+@url_base = http://localhost:5211/api/carrinho
+
+### Criar novo carrinho
+POST {{url_base}}/criar
+
+### Adicionar item ao carrinho
+POST {{url_base}}/adicionar-item
+Content-Type: application/json
+
+{
+    "carrinhoId": 3,
+    "materialId": 2,
+    "quantidade": 30
+}
+
+### Buscar carrinho por ID
+GET {{url_base}}/buscar/3
+
+### Remover item do carrinho
+DELETE {{url_base}}/remover-item/2
+
+### Limpar todos os itens do carrinho
+DELETE {{url_base}}/limpar/1
+
+### Deletar carrinho inteiro
+DELETE {{url_base}}/deletar/1

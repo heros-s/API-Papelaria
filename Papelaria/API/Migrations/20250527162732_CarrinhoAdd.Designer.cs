@@ -4,6 +4,7 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527162732_CarrinhoAdd")]
+    partial class CarrinhoAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,35 +71,6 @@ namespace API.Migrations
                     b.ToTable("Funcionarios");
                 });
 
-            modelBuilder.Entity("API.Models.ItemVenda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MaterialId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("PrecoUnitario")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VendaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaterialId");
-
-                    b.HasIndex("VendaId");
-
-                    b.ToTable("ItensVenda");
-                });
-
             modelBuilder.Entity("API.Models.Material", b =>
                 {
                     b.Property<int>("Id")
@@ -121,25 +95,6 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Materiais");
-                });
-
-            modelBuilder.Entity("API.Models.Venda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Vendas");
                 });
 
             modelBuilder.Entity("Carrinho", b =>
@@ -199,25 +154,6 @@ namespace API.Migrations
                     b.Navigation("Material");
                 });
 
-            modelBuilder.Entity("API.Models.ItemVenda", b =>
-                {
-                    b.HasOne("API.Models.Material", "Material")
-                        .WithMany()
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Models.Venda", "Venda")
-                        .WithMany("Itens")
-                        .HasForeignKey("VendaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Material");
-
-                    b.Navigation("Venda");
-                });
-
             modelBuilder.Entity("ItemCarrinho", b =>
                 {
                     b.HasOne("Carrinho", "Carrinho")
@@ -235,11 +171,6 @@ namespace API.Migrations
                     b.Navigation("Carrinho");
 
                     b.Navigation("Material");
-                });
-
-            modelBuilder.Entity("API.Models.Venda", b =>
-                {
-                    b.Navigation("Itens");
                 });
 
             modelBuilder.Entity("Carrinho", b =>

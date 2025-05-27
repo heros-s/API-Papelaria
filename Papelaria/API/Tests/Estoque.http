@@ -2,7 +2,6 @@
 
 @url_base = http://localhost:5211/api/estoque
 
-
 ### Listar estoques
 GET {{url_base}}/listar
 
@@ -16,11 +15,11 @@ Content-Type: application/json
 }
 
 ### Atualizar estoque
-PUT {{url_base}}/atualizar/1
+PUT {{url_base}}/atualizar/2
 Content-Type: application/json
 
 {
-    "id": 1,
+    "id": 2,
     "quantidade": 200
 }
 
@@ -28,4 +27,4 @@ Content-Type: application/json
 DELETE {{url_base}}/remover/1
 
 ### Buscar estoque por ID
-GET {{url_base}}/buscar/1
+GET {{url_base}}/buscar/2

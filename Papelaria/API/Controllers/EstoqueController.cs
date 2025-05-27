@@ -49,8 +49,8 @@ public class EstoqueController : ControllerBase
         if (estoqueExistente != null)
             return Conflict($"Já existe um estoque registrado para o material com ID {estoque.Id}.");
 
-        // Atribui o material explicitamente (opcional)
-        estoque.Material = material;
+        // Garante que o material não seja sobrescrito
+        estoque.Material = null;
 
         _context.Estoques.Add(estoque);
         await _context.SaveChangesAsync();

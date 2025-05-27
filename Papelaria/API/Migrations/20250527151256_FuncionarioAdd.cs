@@ -7,12 +7,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Migrations
 {
     /// <inheritdoc />
-    public partial class EstoqueComIdMaterial : Migration
+    public partial class FuncionarioAdd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Funcionarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cargo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Salario = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    DataContratacao = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Funcionarios", x => x.Id);
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -41,6 +60,7 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
+                    DataCriacao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UltimaAtualizacao = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -61,6 +81,9 @@ namespace API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Estoques");
+
+            migrationBuilder.DropTable(
+                name: "Funcionarios");
 
             migrationBuilder.DropTable(
                 name: "Materiais");

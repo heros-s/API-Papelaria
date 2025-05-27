@@ -2,7 +2,6 @@
 
 @url_base = http://localhost:5211/api/material
 
-
 ### Listar materiais
 GET {{url_base}}/listar
 
@@ -11,10 +10,10 @@ POST {{url_base}}/cadastrar
 Content-Type: application/json
 
 {
-    "nome": "Borracha Faber-Castell",
-    "descricao": "Borracha branca macia",
-    "preco": 1.25,
-    "categoria": "Borrachas"
+    "nome": "Apontador Acrilex",
+    "descricao": "Apontador de lápis com depósito",
+    "preco": 3.00,
+    "categoria": "Apontadores"
 }
 
 ### Alterar material

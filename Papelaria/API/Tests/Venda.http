@@ -1,0 +1,14 @@
+@url_base = http://localhost:5211/api/venda
+
+### Efetuar uma venda a partir de um carrinho existente
+### Certifique-se de que o carrinho com ID 1 exista e contenha itens.
+POST {{url_base}}/efetuar/3
+Content-Type: application/json
+
+{}
+
+### Listar todas as vendas
+GET {{url_base}}/listar
+
+### Buscar uma venda por ID (exemplo com ID 1)
+GET {{url_base}}/buscar/1

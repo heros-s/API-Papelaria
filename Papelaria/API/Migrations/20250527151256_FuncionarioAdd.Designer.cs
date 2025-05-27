@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250527032938_EstoqueComIdMaterial")]
-    partial class EstoqueComIdMaterial
+    [Migration("20250527151256_FuncionarioAdd")]
+    partial class FuncionarioAdd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace API.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
@@ -39,6 +42,33 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estoques");
+                });
+
+            modelBuilder.Entity("API.Models.Funcionario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DataContratacao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Funcionarios");
                 });
 
             modelBuilder.Entity("API.Models.Material", b =>

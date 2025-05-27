@@ -13,6 +13,7 @@ public class Estoque
     public Material? Material { get; set; }
     [Range(0, int.MaxValue)]
     public int Quantidade { get; set; }
+    public DateTime DataCriacao { get; set; } = DateTime.Now;
     public DateTime UltimaAtualizacao { get; set; } = DateTime.Now;
     
 }
