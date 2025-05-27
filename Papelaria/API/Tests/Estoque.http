@@ -1,0 +1,31 @@
+// Estoque.http
+
+@url_base = http://localhost:5211/api/estoque
+
+
+### Listar estoques
+GET {{url_base}}/listar
+
+### Cadastrar estoque
+POST {{url_base}}/cadastrar
+Content-Type: application/json
+
+{
+    "id": 2,
+    "quantidade": 300
+}
+
+### Atualizar estoque
+PUT {{url_base}}/atualizar/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "quantidade": 200
+}
+
+### Remover estoque
+DELETE {{url_base}}/remover/1
+
+### Buscar estoque por ID
+GET {{url_base}}/buscar/1

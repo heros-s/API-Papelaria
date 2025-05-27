@@ -1,3 +1,5 @@
+// Program.cs
+
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,3 +1,5 @@
+// Material.cs
+
 namespace API.Models;
 
 public class Material
