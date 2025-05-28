@@ -10,8 +10,8 @@ POST {{url_base}}/cadastrar
 Content-Type: application/json
 
 {
-    "id": 2,
-    "quantidade": 300
+    "id": 4,
+    "quantidade": 150
 }
 
 ### Atualizar estoque

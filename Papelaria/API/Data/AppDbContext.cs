@@ -18,6 +18,8 @@ public class AppDbContext : DbContext
     public DbSet<ItemCarrinho> ItensCarrinho { get; set; }
     public DbSet<Venda> Vendas { get; set; }
     public DbSet<ItemVenda> ItensVenda { get; set; }
+    public DbSet<ContaPagar> ContasPagar { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Estoque>()
@@ -46,5 +48,10 @@ public class AppDbContext : DbContext
             .HasOne(iv => iv.Venda)
             .WithMany(v => v.Itens)
             .HasForeignKey(iv => iv.VendaId);
+
+        modelBuilder.Entity<Venda>()
+            .Property(v => v.Status)
+            .HasConversion<string>();
+
     }
 }

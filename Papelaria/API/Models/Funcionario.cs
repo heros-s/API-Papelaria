@@ -13,7 +13,6 @@ public class Funcionario
     [Required]
     public string Cargo { get; set; } = string.Empty;
 
-    [Range(0, double.MaxValue)]
     public decimal Salario { get; set; }
 
     public DateTime DataContratacao { get; set; }

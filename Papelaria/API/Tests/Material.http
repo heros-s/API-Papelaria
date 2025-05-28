@@ -10,10 +10,10 @@ POST {{url_base}}/cadastrar
 Content-Type: application/json
 
 {
-    "nome": "Apontador Acrilex",
-    "descricao": "Apontador de lápis com depósito",
-    "preco": 3.00,
-    "categoria": "Apontadores"
+    "nome": "Cola Pritt",
+    "descricao": "Cola em bastão",
+    "preco": 2.50,
+    "categoria": "Colas"
 }
 
 ### Alterar material

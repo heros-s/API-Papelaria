@@ -1,0 +1,33 @@
+@url_base = http://localhost:5211/api/contaspagar
+
+### Cadastrar conta a pagar
+POST {{url_base}}/cadastrar
+Content-Type: application/json
+
+{
+    "descricao": "Conta de energia",
+    "valor": 340.75,
+    "dataVencimento": "2025-06-10",
+    "status": "Pendente"
+}
+
+### Listar contas
+GET {{url_base}}/listar
+
+### Buscar conta por ID
+GET {{url_base}}/buscar/1
+
+### Atualizar conta
+PUT {{url_base}}/atualizar/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "descricao": "Conta de energia atualizada",
+    "valor": 340.75,
+    "dataVencimento": "2025-06-10",
+    "status": "Paga"
+}
+
+### Remover conta
+DELETE {{url_base}}/remover/1

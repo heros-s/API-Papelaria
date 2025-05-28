@@ -1,3 +1,5 @@
+// VendaController.cs
+
 using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +38,9 @@ public class VendaController : ControllerBase
 
         var venda = new Venda
         {
+            Data = DateTime.Now,
             Total = carrinho.Total,
+            Status = StatusVenda.Concluida,
             Itens = carrinho.Itens.Select(i => new ItemVenda
             {
                 MaterialId = i.MaterialId,
@@ -53,6 +57,7 @@ public class VendaController : ControllerBase
             estoque!.Quantidade -= item.Quantidade;
             estoque.UltimaAtualizacao = DateTime.Now;
         }
+
         _context.ItensCarrinho.RemoveRange(carrinho.Itens);
         _context.Carrinhos.Remove(carrinho);
 
@@ -83,4 +88,13 @@ public class VendaController : ControllerBase
 
         return venda;
     }
+
+    [HttpGet("contasareceber")]
+    public async Task<ActionResult<IEnumerable<Venda>>> GetContasAReceber()
+    {
+        return await _context.Vendas
+            .Where(v => v.Status == StatusVenda.EmCarrinho || v.Status == StatusVenda.Concluida)
+            .ToListAsync();
+    }
+
 }
