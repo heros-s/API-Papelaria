@@ -1,0 +1,3 @@
+### Relatório de Contabilidade
+GET http://localhost:5211/api/relatorios/Contabilidade
+Accept: application/json

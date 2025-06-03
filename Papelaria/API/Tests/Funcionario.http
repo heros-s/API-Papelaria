@@ -1,0 +1,37 @@
+// Funcionario.http
+
+@url_base = http://localhost:5211/api/funcionario
+
+### Listar funcionários
+GET {{url_base}}/listar
+
+### Cadastrar funcionário
+POST {{url_base}}/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Bruno Lins",
+    "cargo": "CFO",
+    "salario": 10000,
+    "dataContratacao": "2025-05-28"
+}
+
+
+### Alterar funcionário
+PUT {{url_base}}/alterar/1
+Content-Type: application/json
+
+{
+    "id": 2,
+    "nome": "Heros Dinao",
+    "cargo": "CEO",
+    "salario": 15000.00,
+    "dataContratacao": "2025-07-27"
+}
+
+### Remover funcionário
+DELETE {{url_base}}/remover/1
+
+### Buscar funcionário por ID
+GET {{url_base}}/buscar/2
+

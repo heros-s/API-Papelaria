@@ -1,0 +1,35 @@
+// Material.http
+
+@url_base = http://localhost:5211/api/material
+
+### Listar materiais
+GET {{url_base}}/listar
+
+### Cadastrar material
+POST {{url_base}}/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Cola Pritt",
+    "descricao": "Cola em bastão",
+    "preco": 2.50,
+    "categoria": "Colas"
+}
+
+### Alterar material
+PUT {{url_base}}/alterar/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "Caneta BIC Azul",
+    "descricao": "Caneta esferográfica azul",
+    "preco": 1,
+    "categoria": "Marcadores e Canetas"
+}
+
+### Remover material
+DELETE {{url_base}}/remover/1
+
+### Buscar material por ID
+GET {{url_base}}/buscar/5
